@@ -4,35 +4,46 @@ import { Sparkles, MapPin, Calendar, Clock, Send, ChevronDown } from "lucide-rea
 
 const INVITATION = {
   couple: {
-    bride: "Tharuni",
-    groom: "Kavindu",
-    brideFull: "Tharuni Wickramasinghe",
-    groomFull: "Kavindu Gayashan",
+    bride: "Saku",
+    groom: "Prabhash",
+    brideFull: "Saku",
+    groomFull: "Prabhash",
   },
   date: {
-    displayNumeric: "28 . 06 . 2026",
-    displayLong: "Sunday, 28 June 2026",
-    countdownTarget: "June 28, 2026 10:58:00",
+    displayNumeric: "18 . 06 . 2026",
+    displayLong: "Wednesday, 18 June 2026",
+    countdownTarget: "June 18, 2026 09:00:00",
   },
   time: {
-    ceremony: "10:58 AM",
-    reception: "10:58 AM",
+    ceremony: "09:00 AM",
+    reception: "04:00 PM",
   },
   venue: {
-    name: "The Pharo",
-    city: "Nittabuwa",
-    mapQuery: "The Pharo, Nittabuwa",
-    googleMapsLink: "https://maps.app.goo.gl/dcyiTJ6vMxk5kmjf7",
+    name: "Golden Ray Hotel",
+    city: "Dambulla",
+    mapQuery: "Golden Ray Hotel, Dambulla",
+    googleMapsLink: "https://maps.app.goo.gl/6YTHEpHyHr9V1VGn9",
   },
-  rsvpContacts: [
-    "Tharuni: ",
-    "Kavindu: ",
-    "Family: ",
-  ],
+  parents: {
+    groomParents: [
+      { name: "D.M. Podi Appuhamy" },
+      { name: "J.A. Vimala Lakshmi" },
+    ],
+    brideParents: [
+      { name: "P. Rajakrishnan" },
+      { name: "R. Sathyabhama" },
+    ],
+  },
+  colorTheme: {
+    primary: "#FFFFFF",
+    accent: "#FFB6D9",
+  },
 } as const;
 
 const backgroundMusic = "/01-Alex_Warren_-_Ordinary_(Wedding_version).mp3";
-const googleScriptUrl = "https://script.google.com/macros/s/AKfycbyHN1BshRvxx96eATyW9C0rtkaNFXAoNAe9lh0TiO1uJ-eKzlwXTKglqTUSz5ZH-CoKqA/exec";
+
+// Google Apps Script Deployment URL
+const googleScriptUrl = "https://script.google.com/macros/s/AKfycbxXy9w03rQUf-TFmka-HMF8zPgQMER6QcCMUoIIpxGrbhRkgmoKznTVqOa4-t-YbMTh/exec";
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 
@@ -541,9 +552,17 @@ export default function WeddingInvitation() {
                     <div className="space-y-4 mb-8">
                       <p className="font-cinzel text-[11px] md:text-sm tracking-[0.4em] mb-2 uppercase font-bold">Two Families Join Hands</p>
                       <div className="flex flex-col items-center justify-center gap-2">
-                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700">Mr. Lesly & Mrs. Chintha</span>
-                        <span className="font-playball text-2xl text-[#ed64a6] italic my-2">Together with</span>
-                        <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700">Mr. Sunil & Mrs. Priyanka</span>
+                        <div className="space-y-1">
+                          <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#d53f8c]/50">Parents of the Groom</p>
+                          <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block">{INVITATION.parents.groomParents[0].name}</span>
+                          <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block">{INVITATION.parents.groomParents[1].name}</span>
+                        </div>
+                        <span className="font-playball text-2xl text-[#ed64a6] italic my-3">Together with</span>
+                        <div className="space-y-1">
+                          <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-[#d53f8c]/50">Parents of the Bride</p>
+                          <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block">{INVITATION.parents.brideParents[0].name}</span>
+                          <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block">{INVITATION.parents.brideParents[1].name}</span>
+                        </div>
                       </div>
                     </div>
 
@@ -572,19 +591,6 @@ export default function WeddingInvitation() {
                   viewport={{ once: true }}
                   className="relative w-full max-w-[520px] mx-auto mb-12"
                 >
-                  <div className="relative bg-white border border-[#ffd1dc]/60 shadow-[0_30px_70px_-20px_rgba(135,147,122,0.18)] p-3 md:p-4">
-                    <div className="absolute inset-2 border-[0.5px] border-[#ed64a6]/20 pointer-events-none" />
-                    <div className="relative aspect-[4/5] overflow-hidden">
-                      <img
-                        src={FEATURED_COUPLE_IMAGE}
-                        alt={`${INVITATION.couple.bride} & ${INVITATION.couple.groom}`}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" aria-hidden="true" />
-                    </div>
-                  </div>
                 </motion.div>
 
                 {/* Names Card */}
@@ -637,7 +643,7 @@ export default function WeddingInvitation() {
                         </div>
                         <div>
                           <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#d53f8c]/40 font-cinzel">Time</div>
-                          <div className="text-sm md:text-base text-[#d53f8c] font-cinzel tracking-wide font-bold">Poruwa Ceremony at {INVITATION.time.ceremony}</div>
+                          <div className="text-sm md:text-base text-[#d53f8c] font-cinzel tracking-wide font-bold">{INVITATION.time.ceremony} - {INVITATION.time.reception}</div>
                         </div>
                       </div>
 
@@ -695,8 +701,8 @@ export default function WeddingInvitation() {
                         <Clock className="w-4 h-4 text-[#ed64a6]" />
                       </div>
                       <div>
-                        <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#d53f8c]/40 font-cinzel">Poruwa Ceremony</div>
-                        <div className="text-sm md:text-base text-[#d53f8c] font-cinzel tracking-wide font-bold">{INVITATION.time.ceremony}</div>
+                        <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-[#d53f8c]/40 font-cinzel">Ceremony Time</div>
+                        <div className="text-sm md:text-base text-[#d53f8c] font-cinzel tracking-wide font-bold">{INVITATION.time.ceremony} - {INVITATION.time.reception}</div>
                       </div>
                     </div>
 
@@ -874,9 +880,9 @@ export default function WeddingInvitation() {
                               <Clock className="w-5 h-5 text-[#ed64a6]" />
                             </div>
                             <div className="space-y-1">
-                              <h4 className="text-[#d53f8c]/40 font-bold text-[10px] uppercase tracking-[0.5em] font-cinzel">The Poruwa Ceremony</h4>
+                              <h4 className="text-[#d53f8c]/40 font-bold text-[10px] uppercase tracking-[0.5em] font-cinzel">Ceremony Time</h4>
                               <p className="text-xl md:text-2xl text-[#d53f8c] font-cinzel leading-relaxed tracking-wide font-bold">
-                                {INVITATION.time.ceremony}
+                                {INVITATION.time.ceremony} - {INVITATION.time.reception}
                               </p>
                             </div>
                           </div>
@@ -913,7 +919,7 @@ export default function WeddingInvitation() {
                         style={{ border: 0 }}
                         allowFullScreen
                         loading="lazy"
-                        className="w-full h-full grayscale-[0.85] contrast-150 sepia-[0.2] brightness-[1.05] hover:grayscale-0 hover:sepia-0 hover:contrast-100 transition-all duration-1000 scale-[1.02] group-hover:scale-100"
+                        className="w-full h-full transition-all duration-1000 scale-[1.02] group-hover:scale-100"
                       />
 
                       {/* Decorative Frame Overlays */}
@@ -1034,16 +1040,7 @@ export default function WeddingInvitation() {
                   </div>
                 </motion.div>
 
-                {/* Info info mirroring the clean aesthetic */}
-                <div className="mt-32 flex flex-col items-center gap-6 text-center w-full max-w-xl">
-                  <div className="h-px w-24 bg-slate-300" />
-                  <p className="text-slate-500 text-[10px] tracking-[0.4em] font-bold uppercase mt-2">RSVP Contacts</p>
-                  <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-slate-500 text-[10px] md:text-sm tracking-widest font-normal opacity-80 decoration-slate-300 underline-offset-4">
-                    {INVITATION.rsvpContacts.map((line) => (
-                      <p key={line}>{line}</p>
-                    ))}
-                  </div>
-                </div>
+
               </div>
             </section>
 
