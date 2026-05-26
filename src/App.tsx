@@ -5,17 +5,17 @@ import { Sparkles, MapPin, Calendar, Clock, Send, ChevronDown } from "lucide-rea
 const INVITATION = {
   couple: {
     bride: "Saku",
-    groom: "Prabhash",
+    groom: "Prabhath",
     brideFull: "Saku",
-    groomFull: "Prabhash",
+    groomFull: "Prabhath",
   },
   date: {
     displayNumeric: "18 . 06 . 2026",
-    displayLong: "Wednesday, 18 June 2026",
-    countdownTarget: "June 18, 2026 09:00:00",
+    displayLong: "Thursday, 18 June 2026",
+    countdownTarget: "June 18, 2026 10:00:00",
   },
   time: {
-    ceremony: "09:00 AM",
+    ceremony: "10:00 AM",
     reception: "04:00 PM",
   },
   venue: {
@@ -26,11 +26,11 @@ const INVITATION = {
   },
   parents: {
     groomParents: [
-      { name: "D.M. Podi Appuhamy" },
-      { name: "J.A. Vimala Lakshmi" },
+      { name: "D.M. Podi Appuhami" },
+      { name: "J.A. Chamila Lasanthi" },
     ],
     brideParents: [
-      { name: "P. Rajakrishnan" },
+      { name: "P. Rajakrishnam" },
       { name: "R. Sathyabhama" },
     ],
   },
@@ -40,14 +40,14 @@ const INVITATION = {
   },
 } as const;
 
-const backgroundMusic = "/01-Alex_Warren_-_Ordinary_(Wedding_version).mp3";
+const backgroundMusic = "/datha-dara-naada-gama-various-artists.mp3";
 
 // Google Apps Script Deployment URL
 const googleScriptUrl = "https://script.google.com/macros/s/AKfycbxXy9w03rQUf-TFmka-HMF8zPgQMER6QcCMUoIIpxGrbhRkgmoKznTVqOa4-t-YbMTh/exec";
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 
-const HERO_BACKGROUND_IMAGE = publicImagePath("1 (4).jpg");
+const HERO_BACKGROUND_IMAGE = "/1.png";
 const FEATURED_COUPLE_IMAGE = publicImagePath("1 (6).jpg");
 
 function FloatingPetals() {
@@ -449,17 +449,13 @@ export default function WeddingInvitation() {
 
             {/* Hero Section */}
             <section className="w-full relative flex items-center justify-center overflow-hidden bg-white min-h-[85vh]">
-              {/* Floral Decorations */}
-              <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-90 transition-transform duration-1000" alt="" />
-              <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-90 transition-transform duration-1000" alt="" />
-
               <div
                 className="absolute inset-0 bg-center bg-cover"
                 style={{ backgroundImage: `url(\"${HERO_BACKGROUND_IMAGE}\")` }}
                 aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-white/70" aria-hidden="true" />
-              <div className="absolute inset-0 bg-gradient-to-b from-theme-50 via-white/70 to-theme-100/40" aria-hidden="true" />
+              <div className="absolute inset-0 bg-white/40" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-b from-theme-50/30 via-white/40 to-theme-100/20" aria-hidden="true" />
               <div className="relative z-10 w-full max-w-5xl px-6 py-24 md:py-32 text-center">
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
@@ -529,7 +525,13 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Wedding Details Section */}
-            <section id="details" className="relative pt-12 md:pt-20 pb-24 md:pb-32 w-full flex flex-col items-center bg-[#ffd1dc]/10 overflow-hidden">
+            <section id="details" className="relative pt-12 md:pt-20 pb-24 md:pb-32 w-full flex flex-col items-center bg-white overflow-hidden">
+              <div
+                className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+                style={{ backgroundImage: `url("/2.png")` }}
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-white/40" aria-hidden="true" />
 
               {/* Ornate Frame Border Overlay */}
               <div className="absolute inset-4 md:inset-8 border-[1.5px] border-[#4a5d23]/30 pointer-events-none z-10" />
@@ -667,6 +669,12 @@ export default function WeddingInvitation() {
 
             {/* Schedule Section (No Images) */}
             <section className="relative py-20 md:py-28 bg-white overflow-hidden">
+              <div
+                className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+                style={{ backgroundImage: `url("/3.png")` }}
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-white/40" aria-hidden="true" />
               <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
                 <motion.div
                   initial={{ opacity: 0, y: 18 }}
@@ -722,6 +730,11 @@ export default function WeddingInvitation() {
 
             {/* Countdown Section */}
             <section className="relative py-28 md:py-48 bg-[#d53f8c] flex flex-col items-center overflow-hidden">
+              <div
+                className="absolute inset-0 bg-center bg-cover bg-no-repeat opacity-20 mix-blend-overlay"
+                style={{ backgroundImage: `url("/1.png")` }}
+                aria-hidden="true"
+              />
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/20 via-transparent to-black/20 pointer-events-none" />
 
               {/* Floating Decorative Shapes */}
@@ -801,11 +814,13 @@ export default function WeddingInvitation() {
 
 
             {/* Venue Location Section */}
-            <section className="relative py-28 md:py-48 bg-[#fdfaf5] overflow-hidden">
-              {/* Floral Decorations */}
-              <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
-              <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
-
+            <section className="relative py-28 md:py-48 bg-white overflow-hidden">
+              <div
+                className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+                style={{ backgroundImage: `url("/2.png")` }}
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-white/40" aria-hidden="true" />
               {/* Decorative Geometric Elements (CSS-Based UI Decorations) */}
               <div className="absolute -top-24 -left-24 w-[500px] h-[500px] border border-[#ed64a6]/10 rounded-full flex items-center justify-center opacity-30 pointer-events-none">
                 <div className="w-[80%] h-[80%] border border-[#d53f8c]/10 rounded-full" />
@@ -953,7 +968,13 @@ export default function WeddingInvitation() {
             </section>
 
             {/* RSVP Section (No Images) */}
-            <section className="relative py-32 md:py-48 bg-[#f8f6f2] flex flex-col items-center overflow-hidden">
+            <section className="relative py-32 md:py-48 bg-white flex flex-col items-center overflow-hidden">
+              <div
+                className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+                style={{ backgroundImage: `url("/3.png")` }}
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-white/40" aria-hidden="true" />
               <div className="container mx-auto px-4 max-w-4xl flex flex-col items-center relative z-10 w-full">
                 {/* Heading exactly like image */}
                 <motion.h2
@@ -1045,11 +1066,13 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Wishing Section */}
-            <section className="relative py-28 md:py-48 bg-[#fdfaf5] overflow-hidden">
-              {/* Floral Decorations */}
-              <img src="/images/44.png" className="absolute top-0 right-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
-              <img src="/images/f.png" className="absolute bottom-0 left-0 w-32 sm:w-48 md:w-64 z-20 pointer-events-none opacity-80" alt="" />
-
+            <section className="relative py-28 md:py-48 bg-white overflow-hidden">
+              <div
+                className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+                style={{ backgroundImage: `url("/1.png")` }}
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-white/40" aria-hidden="true" />
               {/* Large Background Text Ornament */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-playball text-[15vw] text-[#ed64a6]/5 whitespace-nowrap pointer-events-none select-none italic">
                 Sweet Messages
@@ -1168,8 +1191,14 @@ export default function WeddingInvitation() {
             </section>
 
             {/* Closing Section (No Images) */}
-            <section className="w-full relative overflow-hidden bg-[#fdfaf5] py-24 md:py-32">
-              <div className="container mx-auto px-6 max-w-5xl text-center">
+            <section className="w-full relative overflow-hidden bg-white py-24 md:py-32">
+              <div
+                className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+                style={{ backgroundImage: `url("/2.png")` }}
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-white/40" aria-hidden="true" />
+              <div className="container mx-auto px-6 max-w-5xl text-center relative z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
